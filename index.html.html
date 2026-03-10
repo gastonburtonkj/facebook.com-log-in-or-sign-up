@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Notepad Tool</title>
+<style>
+ body {
+ font-family: Arial, sans-serif;
+ background: #f0f2f5;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 20px;
+ }
+ h2 { margin-bottom: 10px; }
+ textarea {
+ width: 80%;
+ height: 200px;
+ font-size: 16px;
+ margin-bottom: 10px;
+ padding: 10px;
+ border-radius: 6px;
+ border: 1px solid #ccc;
+ resize: vertical;
+ }
+ button {
+ margin: 5px;
+ padding: 10px 20px;
+ font-size: 16px;
+ cursor: pointer;
+ border-radius: 6px;
+ border: none;
+ background: #1877f2;
+ color: white;
+ }
+ button:hover { background: #166fe5; }
+</style>
+</head>
+<body>
+
+<h2>Harsh Notepad</h2>
+<textarea id="noteArea" placeholder="Write your notes here..."></textarea>
+<div>
+ <button id="harshBtn">Harsh (Lock)</button>
+ <button id="unharshBtn">Unharsh (Unlock)</button>
+</div>
+
+<script>
+// Simple reversible “harsh” using base64
+const noteArea = document.getElementById("noteArea");
+let savedHarsh = "";
+
+document.getElementById("harshBtn").addEventListener("click", function() {
+ const text = noteArea.value;
+ if(text) {
+ savedHarsh = btoa(text); // encode to base64
+ noteArea.value = savedHarsh; // show scrambled version
+ noteArea.readOnly = true; // lock textarea
+ alert("Notes are now harsh/locked!");
+ }
+});
+
+document.getElementById("unharshBtn").addEventListener("click", function() {
+ if(savedHarsh) {
+ const original = atob(savedHarsh); // decode from base64
+ noteArea.value = original;
+ noteArea.readOnly = false; // unlock textarea
+ alert("Notes are now un-harsh/unlocked!");
+ }
+});
+</script>
+
+</body>
+</html>
