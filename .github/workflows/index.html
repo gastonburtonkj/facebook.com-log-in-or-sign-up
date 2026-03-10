@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>facebook – Login or sign up</title>
+<style>
+*{box-sizing:border-box;}
+body{
+ margin:0;
+ font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ background:#f0f2f5;
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
+.container{
+ display:flex;
+ width:100%;
+ max-width:1100px;
+ gap:70px;
+ padding:60px 20px;
+}
+
+.left{
+ flex:1.1;
+ padding-top:60px;
+}
+
+.logo{
+ font-size:48px;
+ font-weight:700;
+ color:#1877f2;
+}
+
+.tagline{
+ font-size:22px;
+ margin-top:10px;
+ color:#1c1e21;
+ max-width:500px;
+ line-height:28px;
+}
+
+.right{
+ flex:1;
+ background:white;
+ padding:40px;
+ border-radius:10px;
+ box-shadow:0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+}
+
+label{
+ font-size:14px;
+ color:#1c1e21;
+ display:block;
+ margin-top:12px;
+ font-weight:500;
+}
+
+input{
+ width:100%;
+ padding:14px;
+ margin-top:6px;
+ border-radius:8px;
+ border:1px solid #dddfe2;
+ font-size:16px;
+ transition: all 0.2s ease-in-out;
+}
+
+/* Stronger blue highlight on focus */
+input:focus{
+ outline:none;
+ border:2px solid #1877f2;
+ box-shadow:0 0 6px rgba(24,119,242,0.6);
+}
+
+input:focus-visible{
+ outline:2px solid #1877f2;
+ outline-offset:2px;
+}
+
+/* Password toggle */
+.password-wrap{
+ position:relative;
+}
+
+.password-wrap input{
+ width:100%;
+ padding-right:40px;
+}
+
+.password-wrap .eye{
+ position:absolute;
+ right:12px;
+ top:50%;
+ transform:translateY(-50%);
+ cursor:pointer;
+ font-size:18px;
+}
+
+/* Buttons and forgot password - pill shape */
+button, .forgot{
+ border-radius:50px;
+ transition:0.2s ease-in-out;
+ cursor:pointer;
+ font-weight:600;
+}
+
+/* Log in button */
+.login-btn{
+ width:100%;
+ padding:7px 12px;
+ margin-top:14px;
+ background:#1877f2;
+ color:white;
+ border:none;
+ height:38px;
+ font-size:16px;
+}
+
+.login-btn:hover, .login-btn:focus{
+ background:#166fe5;
+ box-shadow:0 4px 12px rgba(0,0,0,0.15);
+ outline:none;
+}
+
+/* Create account */
+.create-btn{
+ width:100%;
+ padding:7px 12px;
+ margin-top:50px; /* extra space to push it down */
+ background:white;
+ color:#1877f2;
+ border:2px solid #1877f2;
+ height:38px;
+ font-size:16px;
+}
+
+.create-btn:hover, .create-btn:focus{
+ background:#d6e4ff; /* stronger blue highlight */
+ border-color:#1877f2;
+ box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Forgot password */
+.forgot{
+ display:inline-block;
+ text-align:center;
+ margin-top:12px;
+ font-size:14px;
+ color:#000;
+ text-decoration:none;
+ padding:6px 14px;
+ transition: all 0.2s ease-in-out;
+}
+
+.forgot:hover, .forgot:focus{
+ background:#e2e6eb; /* stronger highlight */
+}
+
+/* Languages */
+.languages{
+ margin-top:100px;
+ text-align:center;
+ font-size:14px;
+ color:#555;
+}
+
+.languages span{
+ margin:6px;
+ cursor:pointer;
+}
+
+/* Responsive for phone */
+@media(max-width:800px){
+ .container{
+ flex-direction:column;
+ gap:30px;
+ }
+ .left{
+ padding-top:10px;
+ text-align:center;
+ }
+ .languages{
+ margin-top:30px;
+ }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+ <div class="left">
+ <div class="logo">facebook</div>
+ <div class="tagline">Connect and explore with people you love.</div>
+ </div>
+
+ <div class="right">
+
+ <form>
+ <!-- Label for Email/Phone -->
+ <label for="username">Log into Facebook</label>
+ <input type="text" id="username" placeholder="Email or phone number" name="username" autocomplete="username" required>
+
+ <!-- Password with toggle -->
+ <label for="password">Password</label>
+ <div class="password-wrap">
+ <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password" required>
+ <span class="eye" id="togglePassword" onclick="togglePassword()"> </span>
+ </div>
+
+ <!-- Log in button -->
+ <button class="login-btn">Log in</button>
+
+ <!-- Forgot password -->
+ <a href="#" class="forgot">Forgot password?</a>
+
+ <!-- Create account button -->
+ <button type="button" class="create-btn">Create new account</button>
+ </form>
+
+ </div>
+
+</div>
+
+<div class="languages">
+ <span>English</span>
+ <span>Français</span>
+ <span>Español</span>
+ <span>Deutsch</span>
+ <span>Português</span>
+</div>
+
+<script>
+function togglePassword(){
+ const password = document.getElementById("password");
+ const toggle = document.getElementById("togglePassword");
+ if(password.type === "password"){
+ password.type="text";
+ toggle.textContent=" ";
+ } else {
+ password.type="password";
+ toggle.textContent=" ";
+ }
+}
+</script>
+
+</body>
+</html>
